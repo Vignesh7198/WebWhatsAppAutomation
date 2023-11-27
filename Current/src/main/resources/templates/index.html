@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+	
+	<form action="uploadExcel" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" multiple>
+  <input type="submit" value="Submit">
+</form>
+
+    <h2>Invalid Numbers</h2>
+
+<table>
+	
+   <tr>  <th>Number</th> <th>Message</th></tr>
+   <tr th:each="entries:${invalidNumbers}">
+	   <td th:text="${entries.key}"></td>
+	   <td th:text="${entries.value}"></td>
+   </tr>
+	
+</table>
+
+</body>
+</html>
